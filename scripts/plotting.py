@@ -20,7 +20,7 @@ def plot_graph(i):
     plt.figure(figsize=(10, 10))
     plt.xlabel(r"$\nu$ [a.u.]")
     plt.ylabel(r"$I$ [a.u.]")
-    plt.plot(x, y, '-', linewidth=0.5)
+    plt.plot(x, y, '-', c='black', linewidth=0.5)
     plt.savefig(output_image, dpi=150, bbox_inches='tight')
     plt.close()
     
