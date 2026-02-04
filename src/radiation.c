@@ -28,7 +28,7 @@ void advance(struct particle *par, double freq, int i, double dt) {
 }
 
 void simulate(FILE *out, struct particle *par, double complex *epsilon_temp, double *output_data, double *freq, double *n, double start_freq, double end_freq, double dt, int num, int core_num) {
-	#pragma omp parallel
+	#pragma omp parallel num_threads(core_num)
 		{
 		int id = omp_get_thread_num();
 		int start_idx = start_index(num, id, core_num);
