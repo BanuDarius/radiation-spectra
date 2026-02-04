@@ -40,34 +40,7 @@ double compute_dt(int num) {
 	double dt = 1.0 / (2000.0 * num);
 	return dt;
 }
-
-double compute_frequency(int i) {
-	double freq = 100.0 + 100.0 * i;
-	return freq;
-}
-
-void create_shared_data(pthread_barrier_t *barrier_compute, pthread_barrier_t *barrier_sync, struct shared_data *shared_data, double *output_data, double complex *epsilon_temp, double *freq, struct particle *par, int num, FILE *out) {
-	for(int i = 0; i < num; i++) {
-		freq[i] = compute_frequency(i);
-	}
-	for(int i = 0; i < CORE_NUM; i++) {
-		shared_data[i].id = i;
-		shared_data[i].num = num;
-		shared_data[i].out = out;
-		shared_data[i].par = par;
-		shared_data[i].freq = freq;
-		shared_data[i].output_data = output_data;
-		shared_data[i].epsilon_temp = epsilon_temp;
-		shared_data[i].barrier_compute = barrier_compute;
-		shared_data[i].barrier_sync = barrier_sync;
-	}
-}
-
-void create_parameters(struct shared_data *shared_data, double start_freq, double end_freq, double dt, double *n) {
-	for(int i = 0; i < CORE_NUM; i++) {
-		shared_data[i].n = n;
-		shared_data[i].dt = dt;
-		shared_data[i].start_freq = start_freq;
-		shared_data[i].end_freq = end_freq;
-	}
+void set_frequency(double *freq, int num) {
+	for(int i = 0; i < num; i++)
+		freq[i] = 100.0 + 100.0 * i;
 }

@@ -1,7 +1,6 @@
 #ifndef EXTRA_H
 #define EXTRA_H
 
-#include <pthread.h>
 #include <complex.h>
 
 #define CORE_NUM 4
@@ -11,7 +10,6 @@
 #define DEG_TO_RAD (pi / 180.0)
 
 extern const double q, e0, pi, m, c;
-extern unsigned int num;
 
 double rand_num(double min, double max);
 void complex_vec_zero(double complex *uc);

@@ -1,19 +1,19 @@
-CC := gcc
-CFLAGS := -Iinclude -O2 -mavx2 -pthread
+CC = gcc
+CFLAGS = -Iinclude -O2 -mavx2 -fopenmp -Wall -Wextra
 
-DEPFLAGS := -MMD -MP
-LDFLAGS := -lm -pthread
+DEPFLAGS = -MMD -MP
+LDFLAGS = -lm -fopenmp
 
-SRC_DIR := src
-BUILD_DIR := build
-BIN_DIR := bin
+SRC_DIR = src
+BUILD_DIR = build
+BIN_DIR = bin
 
-TARGET_NAME := radiation
-TARGET := $(BIN_DIR)/$(TARGET_NAME)
+TARGET_NAME = radiation
+TARGET = $(BIN_DIR)/$(TARGET_NAME)
 
-SRCS := $(wildcard $(SRC_DIR)/*.c)
-OBJS := $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRCS))
-DEPS := $(OBJS:.o=.d)
+SRCS = $(wildcard $(SRC_DIR)/*.c)
+OBJS = $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRCS))
+DEPS = $(OBJS:.o=.d)
 
 all: $(TARGET)
 

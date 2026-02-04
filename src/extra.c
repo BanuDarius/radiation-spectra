@@ -1,7 +1,6 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <pthread.h>
 #include <complex.h>
 
 #include "extra.h"
