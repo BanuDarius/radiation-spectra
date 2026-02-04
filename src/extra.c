@@ -11,8 +11,6 @@ const double c = 137.036;
 const double e0 = 0.07957747154;
 const double pi = 3.14159265359;
 
-unsigned int num;
-
 double rand_num(double min, double max) {
 	double s = rand() / (double)RAND_MAX;
 	return min + s * (max - min);
@@ -88,13 +86,13 @@ void rotate(double *u, double phi, double theta) {
 	u[1] = x * sin(theta) + y * cos(theta);
 }
 
-int start_index(int n, unsigned int thread_num) {
-	int index = n * thread_num / CORE_NUM;
+int start_index(int n, int thread_idx, int core_num) {
+	int index = n * thread_idx / core_num;
 	return index;
 }
 
-int final_index(int n, unsigned int thread_num) {
-	int index = n * (thread_num + 1) / CORE_NUM;
+int final_index(int n, int thread_idx, int core_num) {
+	int index = n * (thread_idx + 1) / core_num;
 	return index;
 }
 

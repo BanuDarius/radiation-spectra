@@ -1,13 +1,12 @@
 #include <math.h>
 #include <stdlib.h>
 #include <complex.h>
-#include <pthread.h>
 
 #include "tools.h"
 #include "extra.h"
 
-void create_particles(struct particle *par, unsigned int num) {
-	for(unsigned int i = 0; i < num; i++)
+void create_particles(struct particle *par, int num) {
+	for(int i = 0; i < num; i++)
 		for(int j = 0; j < 3; j++) {
 			par[i].betaAccel[j] = 0.0;
 			par[i].beta[j] = 0.0;

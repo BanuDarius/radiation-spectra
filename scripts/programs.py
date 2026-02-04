@@ -7,8 +7,8 @@ BIN_DIR = PROJECT_ROOT / "bin"
 OUTPUT_DIR = PROJECT_ROOT / "output"
 OUTPUT_IMAGE_DIR = PROJECT_ROOT / "output-image"
 
-def run_program(i):
+def run_program(i, core_num):
     program_name = f"{BIN_DIR}/radiation"
-    output_filename = f"{OUTPUT_DIR}/out.txt"
+    output_filename = f"{OUTPUT_DIR}/out.bin"
     
-    os.system(f"{program_name} {i} {output_filename}")
+    os.system(f"{program_name} {i} {core_num} {output_filename}")

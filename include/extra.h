@@ -3,7 +3,6 @@
 
 #include <complex.h>
 
-#define CORE_NUM 4
 #define FREQ_NUM 1024
 #define STEP_NUM 2048
 
@@ -24,8 +23,8 @@ double magnitude(double *a);
 void vec_mult(double *a, double b);
 void vec_sub(double *u, double *a, double *b);
 void rotate(double *u, double phi, double theta);
-int start_index(int n, unsigned int thread_num);
-int final_index(int n, unsigned int thread_num);
+int start_index(int n, int thread_idx, int core_num);
+int final_index(int n, int thread_idx, int core_num);
 void check_arguments(int argc, char **argv);
 
 #endif

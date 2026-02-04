@@ -10,7 +10,7 @@ OUTPUT_DIR = PROJECT_ROOT / "output"
 OUTPUT_IMAGE_DIR = PROJECT_ROOT / "output-image"
 
 def plot_graph(i):
-    output_filename = f"{OUTPUT_DIR}/out.txt"
+    output_filename = f"{OUTPUT_DIR}/out.bin"
     output_image = f"{OUTPUT_IMAGE_DIR}/out-{i}.png"
     
     data = np.fromfile(output_filename, dtype=np.float64).reshape(-1, 2)
