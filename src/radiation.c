@@ -64,8 +64,7 @@ void simulate(FILE *out, struct particle *par, double complex *epsilon_temp, dou
 }
 
 int main(int argc, char **argv) {
-	srand(time(NULL));
-	clock_t ti = clock();
+	double start_time = omp_get_wtime();
 	FILE *out = fopen(argv[3], "wb");
 	
 	check_arguments(argc, argv);
@@ -79,7 +78,7 @@ int main(int argc, char **argv) {
 	struct particle *par = malloc(num * sizeof(struct particle));
 	double complex *epsilon_temp = malloc(3 * core_num * sizeof(double complex));
 	
-	if(!output_data || !par || !epsilon_temp) { perror("Not enough memory."); abort(); }
+	if(!output_data || !par || !epsilon_temp) { perror("Not enough memory."); return 1; }
 	
 	rotate(n, 60.0 * DEG_TO_RAD, 0.0);
 	create_particles(par, num);
@@ -88,7 +87,7 @@ int main(int argc, char **argv) {
 	simulate(out, par, epsilon_temp, output_data, freq, n, start_freq, end_freq, dt, num, core_num);	
 	printf("Simulation ended.\n");
 	
-	printf("Time taken: %0.3fs.\n", (double)(clock() - ti) / (CLOCKS_PER_SEC * core_num));
+	printf("Time taken: %0.3fs.\n", omp_get_wtime() - start_time);
 	free(output_data); free(epsilon_temp);
 	fclose(out);
 	return 0;

@@ -100,6 +100,6 @@ void check_arguments(int argc, char **argv) {
 	if(argc < 3) {
 		printf("This is a program that simulates the emitted radiation spectra of accelerated electrons.\n");
 		printf("Usage: %s <num_particles>", argv[0]);
-		abort();
+		exit(0);
 	}
 }

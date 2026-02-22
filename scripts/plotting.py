@@ -24,4 +24,4 @@ def plot_graph(i):
     plt.savefig(output_image, dpi=150, bbox_inches='tight')
     plt.close()
     
-    print(f"Created scatter plot of radiation spectra for N = {i}.")
+    print(f"Created scatter plot.")
